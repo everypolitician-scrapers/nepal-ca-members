@@ -18,17 +18,16 @@ def reprocess_csv(file)
     next if row[8].to_s.empty?
     next if row[0].to_s.include? 'Development Region'
     data = { 
-      name: row[2],
-      name__en: row[8],
-      area: row[1],
-      area__en: row[7],
-      email: row[6],
-      party: row[5],
-      mobile: (row[3] || "").lines.first,
-      phone: (row[4] || "").lines.first,
+      name: row[2].to_s.strip,
+      name__en: row[8].to_s.strip,
+      area: row[1].to_s.strip,
+      area__en: row[7].to_s.strip,
+      email: row[6].to_s.strip,
+      party: row[5].to_s.strip,
+      mobile: (row[3] || "").lines.first.to_s.strip,
+      phone: (row[4] || "").lines.first.to_s.strip,
       term: 'ca2',
     }
-    puts data[:name]
     ScraperWiki.save_sqlite([:name, :term], data)
   end
 end
