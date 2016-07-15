@@ -15,19 +15,19 @@ def reprocess_csv(file)
   csv = CSV.parse(raw.lines.drop(2).join)
   csv.each_with_index do |row, i|
     next if row[0].to_s.empty?
-    next if row[8].to_s.empty?
+    next if row[9].to_s.empty?
     next if row[0].to_s.include? 'Development Region'
-    data = { 
-      name: row[8].to_s.strip,
-      name__ne: row[2].to_s.strip,
-      area: row[7].to_s.strip,
-      area__ne: row[1].to_s.strip,
-      party: row[11].to_s.strip,
-      party__ne: row[5].to_s.strip,
-      email: row[6].to_s.strip,
-      mobile: (row[3] || "").lines.first.to_s.strip,
-      phone: (row[4] || "").lines.first.to_s.strip,
-      term: 'ca2',
+    data = {
+      name:      row[9].to_s.strip,
+      name__ne:  row[2].to_s.strip,
+      area:      row[8].to_s.strip,
+      area__ne:  row[1].to_s.strip,
+      party:     row[12].to_s.strip,
+      party__ne: row[6].to_s.strip,
+      email:     row[7].to_s.strip,
+      mobile:    (row[3] || "").lines.first.to_s.strip,
+      phone:     (row[5] || "").lines.first.to_s.strip,
+      term:      'ca2',
     }
     ScraperWiki.save_sqlite([:name, :area, :term], data)
   end
