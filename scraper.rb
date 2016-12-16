@@ -1,13 +1,11 @@
 #!/bin/env ruby
 # encoding: utf-8
 
-require 'colorize'
 require 'csv'
-require 'json'
 require 'nokogiri'
 require 'scraperwiki'
 
-# require 'open-uri/cached'
+# require 'open-uri/cached'
 # OpenURI::Cache.cache_path = '.cache'
 
 def reprocess_csv(file)
