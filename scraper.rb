@@ -16,7 +16,7 @@ def reprocess_csv(file)
     next if row[9].to_s.empty?
     next if row[0].to_s.include? 'Development Region'
     data = {
-      name:      row[9].to_s.strip,
+      name:      row[9].to_s.sub('मा.','').strip,
       name__ne:  row[2].to_s.strip,
       area:      row[8].to_s.strip,
       area__ne:  row[1].to_s.strip,
